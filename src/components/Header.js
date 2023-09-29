@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom'
 const navigation = [
   { name: 'Employees', href: '/Employees', current: true },
   { name: 'Customers', href: '/Customers', current: false },
-  { name: 'Projects', href: '/others', current: false },
+  { name: 'Dictionary', href: '/Dictionary', current: false },
   { name: 'Calendar', href: '/others2', current: false },
 ]
 
@@ -16,6 +16,7 @@ function classNames(...classes) {
 
 export default function Example(props) {
   return (
+    <>
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
         <>
@@ -121,24 +122,27 @@ export default function Example(props) {
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
               {navigation.map((item) => (
-                <Disclosure.Button
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block rounded-md px-3 py-2 text-base font-medium'
-                  )}
-                  aria-current={item.current ? 'page' : undefined}
+                <NavLink
+                    key={item.name}
+                    to={item.href}
+                    className={({isActive}) => {
+                        return (
+                            'block px-3 py-2 rounded-md text-sm font-medium no-underline ' +
+                            (isActive ? ' bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white')
+                        );
+                    }}
                 >
                   {item.name}
-                </Disclosure.Button>
+                </NavLink>
               ))}
             </div>
           </Disclosure.Panel>
-          {props.children}
         </>
       )}
     </Disclosure>
-  )
+    <div className="bg-gray-300 min-h-screen">
+        {props.children}
+    </div>
+    </>
+  );
 }

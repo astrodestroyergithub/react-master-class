@@ -79,7 +79,7 @@ function Employees() {
   }
 
   return (
-    <div className="App bg-gray-300 min-h-screen">
+    <div className="">
       {showEmployees ? (
         <header className="App-header">
           <div className="flex flex-wrap justify-center">
