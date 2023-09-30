@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Dictionary() {
     const [word, setWord] = useState('');
+
+    let navigate = useNavigate();
 
     useEffect(() => {
         console.log('State Updated ', word);
@@ -17,6 +20,12 @@ export default function Dictionary() {
                 setWord(e.target.value);
             }} />
             <h1>Let's get the definition for {word}</h1>
+
+            <button onClick={() => 
+                {navigate('/definition/' + word)
+            }}>
+                Search
+            </button>
         </>
     );
 }
