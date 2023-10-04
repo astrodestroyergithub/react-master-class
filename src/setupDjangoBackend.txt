@@ -1,0 +1,20 @@
+1. Check python version on your OS:
+>> py --version
+2. Navigate to the directory in which frontend files (react project) is there
+>> cd project
+3. Make a directory for backend files
+>> mkdir backend
+4. Create a virtual environment
+>> python3 -m venv .venv
+5. Activate the virtual environment
+>> .venv\Source\activate
+OR
+>> .venv\Scripts\activate
+6. Install django package
+>> pip install django
+7. Execute the new command
+>> django-admin
+8. Execute the below command with the name of the application you want to give it
+>> django-admin startproject customers .
+9. Run server
+>> python3 manage.py runserver
